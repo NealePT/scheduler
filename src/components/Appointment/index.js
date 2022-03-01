@@ -36,14 +36,15 @@ export default function Appointment(props) {
     .then(res => {
       transition(SHOW);
     })
-    .catch(err => console.log(err))
+    .catch(err => transition(ERROR_SAVE, true))
   }
 
   function deleteInt() {
     if (mode === CONFIRM) {
-      transition(DELETING)
+      transition(DELETING, true)
       props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
+      .catch(err => transition(ERROR_DELETE, true))
     } else {
       transition(CONFIRM);
     }
@@ -96,6 +97,18 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           onCancel={back}
           onSave={save}
+        />
+      )}
+      {mode === ERROR_SAVE && (
+        <Error 
+          message="Could not create appointment."
+          onClose={back}
+        />
+      )}
+            {mode === ERROR_DELETE && (
+        <Error 
+          message="Could not cancel appointment."
+          onClose={back}
         />
       )}
     </article>
