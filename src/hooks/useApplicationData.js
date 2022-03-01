@@ -31,9 +31,17 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+    
+    const spotAdjuster = state.days.map((day) => {
+      if (day.appointments.includes(id)) {
+        day.spots --;
+      }
+      return day
+    })
+
     return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview:interview})
     .then(res => {
-      setState({...state, appointments})
+      setState({...state, appointments, spotAdjuster})
       return res
     })
   }  
@@ -48,9 +56,16 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+    const spotAdjuster = state.days.map((day) => {
+      if (day.appointments.includes(id)) {
+        day.spots ++;
+      }
+      return day
+    })
+
     return axios.delete(`http://localhost:8001/api/appointments/${id}`,)
     .then(res => {
-      setState({...state, appointments})
+      setState({...state, appointments, spotAdjuster})
       return res
     })
   }
