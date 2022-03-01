@@ -11,10 +11,13 @@ import useVisualMode from 'hooks/useVisualMode';
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
-const CREATE = "CREATE"
-const SAVING = "SAVING"
-const DELETING = "DELETING"
-const CONFIRM = "CONFIRM"
+const CREATE = "CREATE";
+const SAVING = "SAVING";
+const DELETING = "DELETING";
+const CONFIRM = "CONFIRM";
+const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
 
 export default function Appointment(props) {
@@ -46,6 +49,10 @@ export default function Appointment(props) {
     }
   }
 
+  function edit() {
+    transition(EDIT)
+  }
+
   return (
     <article className="appointment">
       <Header time={props.time}/>
@@ -59,6 +66,7 @@ export default function Appointment(props) {
           student={props.interview.student} 
           interviewer={props.interview.interviewer}
           onDelete={deleteInt}
+          onEdit={edit}
         />
       )}
       {mode === CREATE && (
@@ -79,6 +87,15 @@ export default function Appointment(props) {
           onCancel={back}
           onConfirm={deleteInt}
           message="Are you sure you would like to delete?"
+        />
+      )}
+      {mode === EDIT && (
+        <Form 
+          student={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+          interviewers={props.interviewers}
+          onCancel={back}
+          onSave={save}
         />
       )}
     </article>
