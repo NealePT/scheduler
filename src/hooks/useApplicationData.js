@@ -33,8 +33,10 @@ export default function useApplicationData() {
     };
     
     const spotAdjuster = state.days.map((day) => {
-      if (day.appointments.includes(id)) {
-        day.spots --;
+      if (state.appointments[id].interview === null) {
+        if (day.appointments.includes(id)) {
+          day.spots --;
+        }
       }
       return day
     })
