@@ -32,14 +32,13 @@ export default function useApplicationData() {
       [id]: appointment
     };
     
+
     const spotAdjuster = state.days.map((day) => {
-      if (state.appointments[id].interview === null) {
-        if (day.appointments.includes(id)) {
-          day.spots --;
-        }
+      if (day.appointments.includes(id) && state.appointments[id].interview === null) {
+        return { ...day, spots: day.spots -- };
       }
-      return day
-    })
+      return day;
+    });
 
     return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview:interview})
     .then(res => {
@@ -60,7 +59,7 @@ export default function useApplicationData() {
 
     const spotAdjuster = state.days.map((day) => {
       if (day.appointments.includes(id)) {
-        day.spots ++;
+        return { ...day, spots: day.spots ++ };
       }
       return day
     })
