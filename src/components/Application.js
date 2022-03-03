@@ -14,6 +14,8 @@ export default function Application(props) {
   } = useApplicationData();
 
   const appointments = getAppointmentsForDay(state, state.day);
+  
+  // Creates each appointment on the page
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     const interviewers = getInterviewersForDay(state, state.day);
