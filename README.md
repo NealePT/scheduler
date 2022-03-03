@@ -19,19 +19,18 @@ Interview Scheduler is a Single Page Application built for creating and tracking
 ### Main View
 
 !["Main view of the homepage"](https://github.com/NealePT/scheduler/blob/master/docs/mainPage.png)
-
 *User can select a day on the left side, which will display the appointments for that day.*
 
-!["Hover view of item"](https://github.com/NealePT/scheduler/blob/master/docs/hoverItem.png)
 
+!["Hover view of item"](https://github.com/NealePT/scheduler/blob/master/docs/hoverItem.png)
 *View of list item when hovered. In the bottom right there are icons that can be clicked to edit or delete the appointment.*
 
-!["Create/Edit Item"](https://github.com/NealePT/scheduler/blob/master/docs/editItem.png)
 
+!["Create/Edit Item"](https://github.com/NealePT/scheduler/blob/master/docs/editItem.png)
 *View of list item when being created/edited. The user clicks on an interviewers picture to select them.*
 
-!["Delete confirmation"](https://github.com/NealePT/scheduler/blob/master/docs/deleteItem.png)
 
+!["Delete confirmation"](https://github.com/NealePT/scheduler/blob/master/docs/deleteItem.png)
 *View of the main page after a user has clicked delete on an item. If the user clicks confirm the item is deleted and the time slot becomes available.*
 
 
@@ -65,6 +64,7 @@ Interview Scheduler is a Single Page Application built for creating and tracking
 * "babel-loader": "^8.0.5",
 * "node-sass": "^4.14.0",
 * "react-test-renderer": "^16.9.0"
+
 
 
 ## Running Webpack Development Server
